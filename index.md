@@ -1,37 +1,36 @@
-## Welcome to GitHub Pages
+<h1>人生就是一个不断学习的过程</h1>
 
-You can use the [editor on GitHub](https://github.com/hyy2393583055/hyy2393583055.github.io/edit/main/index.md) to maintain and preview the content for your website in Markdown files.
+<p>人生就是一个不断学习的过程，通过学习来充实自己的头脑，让自己更有智慧的生活下去，去探索那未知领域的神秘，去享受成长带来的快乐和惬意。</p>
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+<p><img src="/qrcode_for_gh_0d3e241c6f10_258.jpg" alt="" /></p>
 
-### Markdown
+<h1>关于 blog-demos 代码仓库</h1>
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+<ol>
+  <li>Github地址：<a href="https://github.com/hyy2393583055">https://github.com/hyy2393583055</a></li>
+  <li>这个代码仓库里是博客中涉及的源码、文件等</li>
+  <li>如果对您有帮助，欢迎给个<strong>Star</strong>，感谢~~</li>
+</ol>
 
-```markdown
-Syntax highlighted code block
+<h2 id="数据结构与算法">数据结构与算法</h2>
 
-# Header 1
-## Header 2
-### Header 3
+<ul>
+  <li><a href="">数组</a></li>
+  <li><a href="">稀疏数组</a></li>
+  <li><a href="">链表（单链表、双链表、环形链表）</a></li>
+  <li><a href="">栈</a></li>
+  <li><a href="">队列</a></li>
+  <li><a href="">树</a></li>
+  <li><a href="">二叉树</a></li>
+  <li><a href="">二叉查找树（BST）</a></li>
+  <li><a href="">AVL树（平衡二叉树）</a></li>
+  <li><a href="">B树</a></li>
+  <li><a href="">散列表（哈希表）</a></li>
+</ul>
 
-- Bulleted
-- List
+<h2 id="设计模式">设计模式</h2>
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/hyy2393583055/hyy2393583055.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+<ul>
+  <li><a href="">单例模式</a></li>
+  <li><a href="">策略模式</a></li>
+</ul>
