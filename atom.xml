@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>随心所欲</title>
   
   
   <link href="http://hyy2393583055.github.io/atom.xml" rel="self"/>
@@ -10,7 +10,7 @@
   <id>http://hyy2393583055.github.io/</id>
   
   <author>
-    <name>Bug君</name>
+    <name>BUG君</name>
     
   </author>
   
