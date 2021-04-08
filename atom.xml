@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>随心所欲</title>
+  
+  
+  <link href="http://hyy2393583055.github.io/atom.xml" rel="self"/>
+  
+  <link href="http://hyy2393583055.github.io/"/>
+  <updated>2021-04-08T09:31:18.993Z</updated>
+  <id>http://hyy2393583055.github.io/</id>
+  
+  <author>
+    <name>BUG君</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JAVA虚拟机</title>
+    <link href="http://hyy2393583055.github.io/2021/040860574.html"/>
+    <id>http://hyy2393583055.github.io/2021/040860574.html</id>
+    <published>2021-04-08T06:44:18.953Z</published>
+    <updated>2021-04-08T09:31:18.993Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;1-Java-内存区域与内存溢出异常&quot;&gt;&lt;a href=&quot;#1-Java-内存区域与内存溢出异常&quot; class=&quot;headerlink&quot; title=&quot;1.Java 内存区域与内存溢出异常&quot;&gt;&lt;/a&gt;1.Java 内存区域与内存溢出异常&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    
+    <category term="虚拟机" scheme="http://hyy2393583055.github.io/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+  </entry>
+  
+</feed>
