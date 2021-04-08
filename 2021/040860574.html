@@ -493,7 +493,7 @@
 <p>操作数栈：虚拟机的解释执行引擎被称为”基于栈的执行引擎”，其中所指的栈就是指操作数栈，也常被称为操作栈。操作数栈也是先进后出的数据结构，是进行数据运算的地方。主要用于保存计算过程的中间结果，同时作为计算过程中变量临时的存储空间。<br>         和局部变量区一样，操作数栈也是被组织成一个以字长为单位的数组。但是和前者不同的是，它不是通过索引来访问，而是通过标准的栈操作—压栈和出栈—来访问的。比如，如果某个指令把一个值压入到操作数栈中，稍后另一个指令就可以弹出这个值来使用。<br>        虚拟机在操作数栈中存储数据的方式和在局部变量区中是一样的：如int、long、float、double、reference和returnType的存储。对于byte、short以及char类型的值在压入到操作数栈之前，也会被转换为int。<br>       虚拟机把操作数栈作为它的工作区——大多数指令都要从这里弹出数据，执行运算，然后把结果压回操作数栈。（也就是说，操作数栈是进行数据运算的地方。）比如，iadd指令就要从操作数栈中弹出两个整数，执行加法运算，其结果又压回到操作数栈中，看看下面的示例，它演示了虚拟机是如何把两个int类型的局部变量相加，再把结果保存到第三个局部变量的：</p>
 <p><img src="G:\Java\hexo\typora-user-images\image-20210408133205354.png" alt="image-20210408133205354"></p>
 <p>​       在这个字节码序列里，前两个指令iload_0和iload_1将存储在局部变量中索引为0和1的整数压入操作数栈中，其后iadd指令从操作数栈中弹出那两个整数相加，再将结果压入操作数栈。第四条指令istore_2则从操作数栈中弹出结果，并把它存储到局部变量区索引为2的位置。下图详细表述了这个过程中局部变量和操作数栈的状态变化，图中没有使用的局部变量区和操作数栈区域以空白表示。</p>
-<p><img src="C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20210408133913360.png" alt="image-20210408133913360"></p>
+<p><img src="G:\Java\hexo\typora-user-images\image-20210408133913360.png" alt="image-20210408133913360"></p>
 <p>动态链接：动态链接库又叫共享库（Shared Library），简单地说，库是对一系列程序的封装，静态库是会在链接时与可执行程序合并的库，而动态库则在链接后仍然与可执行文件分离，直到运行时才动态加载。显然，动态库可以共享给多个可执行程序同时使用，更节约硬盘和内存空间。不管是Windows开发者，还是Linux开发者，或者是Android、iOS开发者，我们无时无刻都在生产或者使用动态库，而且很少遇到困难。这得益于一套完整的动态链接机制，该机制保证链接和运行时，能够准确找到正确的动态库。</p>
 <h3 id="1-1-5-本地方法栈"><a href="#1-1-5-本地方法栈" class="headerlink" title="1.1.5 本地方法栈"></a>1.1.5 本地方法栈</h3><p>区别于 Java 虚拟机栈的是，Java 虚拟机栈为虚拟机执行 Java 方法(也就是字节码)服务，而本地方法栈则为虚拟机使用到的 Native 方法服务。也会有 StackOverflowError 和 OutOfMemoryError 异常。</p>
 <p>StackOverflowError：线程请求的栈深度大于虚拟机所允许的深度。<br>OutOfMemoryError：如果虚拟机栈可以动态扩展，而扩展时无法申请到足够的内存。</p>
@@ -503,7 +503,7 @@
 <h2 id="2-1-类加载时机"><a href="#2-1-类加载时机" class="headerlink" title="2.1 类加载时机"></a>2.1 类加载时机</h2><blockquote>
 <p>在 Java 语言中，类型的加载、连接和初始化过程都是在程序运行期间完成的。类的生命周期( 7 个阶段)</p>
 </blockquote>
-<p><img src="C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20210408140436853.png" alt="image-20210408140436853"></p>
+<p><img src="G:\Java\hexo\typora-user-images\image-20210408140436853.png" alt="image-20210408140436853"></p>
 <p>其中加载、验证、准备、初始化和卸载这五个阶段的顺序是确定的。解析阶段可以在初始化之后再开始(运行时绑定或动态绑定或晚期绑定)。</p>
 <p>以下五种情况必须对类进行初始化(而加载、验证、准备自然需要在此之前完成)：</p>
 <p>（1）遇到 new、getstatic、putstatic 或 invokestatic 这 4 条字节码指令时没初始化触发初始化。使用场景：使用 new 关键字实例化对象、读取一个类的静态字段(被 final 修饰、已在编译期把结果放入常量池的静态字段除外)、调用一个类的静态方法。<br>（2）使用 java.lang.reflect 包的方法对类进行反射调用的时候。<br>（3）当初始化一个类的时候，如果发现其父类还没有进行初始化，则需先触发其父类的初始化。<br>（4）当虚拟机启动时，用户需指定一个要加载的主类(包含 main() 方法的那个类)，虚拟机会先初始化这个主类。<br>（5）当使用 JDK 1.7 的动态语言支持时，如果一个 java.lang.invoke.MethodHandle 实例最后的解析结果 REF_getStatic、REF_putStatic、REF_invokeStatic 的方法句柄，并且这个方法句柄所对应的类没有进行过初始化，则需先触发其初始化。</p>
@@ -571,7 +571,7 @@
 <p>符号引用中通过字符创描述的全限定名是否能找到对应的类<br>在指定类中是否存在符方法的字段描述符以及简单名称所描述的方法和字段<br>符号引用中的类、字段、方法的访问性（private、protected、public、default）是否可被当前类访问<br>……<br>最后一个阶段的校验发生在迅疾将符号引用转化为直接引用的时候，这个转化动作将在连接的第三阶段——解析阶段中发生。符号引用验证可以看做是对类自身以外（常量池中的各种符号引用）的信息进行匹配性校验，还有以上提及的内容。<br>符号引用的目的是确保解析动作能正常执行，如果无法通过符号引用验证将抛出一个 java.lang.IncompatibleClass.ChangeError 异常的子类。如 java.lang.IllegalAccessError、java.lang.NoSuchFieldError、java.lang.NoSuchMethodError 等。</p>
 <h3 id="2-2-3-准备"><a href="#2-2-3-准备" class="headerlink" title="2.2.3 准备"></a>2.2.3 准备</h3><p>这个阶段正式为类分配内存并设置类变量初始值，内存在方法去中分配(含 static 修饰的变量不含实例变量)。</p>
 <p>public static int value = 1127;<br>这句代码在初始值设置之后为 0，因为这时候尚未开始执行任何 Java 方法。而把 value 赋值为 1127 的 putstatic 指令是程序被编译后，存放于 clinit() 方法中，所以初始化阶段才会对 value 进行赋值。</p>
-<p>基本数据类型的零值<br><img src="C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20210408141509652.png" alt="image-20210408141509652"><br>特殊情况：如果类字段的字段属性表中存在 ConstantValue 属性，在准备阶段虚拟机就会根据 ConstantValue 的设置将 value 赋值为 1127。</p>
+<p>基本数据类型的零值<br><img src="G:\Java\hexo\typora-user-images\image-20210408141509652.png" alt="image-20210408141509652"><br>特殊情况：如果类字段的字段属性表中存在 ConstantValue 属性，在准备阶段虚拟机就会根据 ConstantValue 的设置将 value 赋值为 1127。</p>
 <h3 id="2-2-4-解析"><a href="#2-2-4-解析" class="headerlink" title="2.2.4 解析"></a>2.2.4 解析</h3><p>这个阶段是虚拟机将常量池内的符号引用替换为直接引用的过程。</p>
 <p>符号引用<br>符号引用以一组符号来描述所引用的目标，符号可以使任何形式的字面量。</p>
 <p>直接引用<br>直接引用可以使直接指向目标的指针、相对偏移量或是一个能间接定位到目标的句柄。直接引用和迅疾的内存布局实现有关</p>
@@ -582,7 +582,7 @@
 <p>启动类加载器<br>加载 lib 下或被 -Xbootclasspath 路径下的类</p>
 <p>扩展类加载器<br>加载 lib/ext 或者被 java.ext.dirs 系统变量所指定的路径下的类</p>
 <p>引用程序类加载器<br>ClassLoader负责，加载用户路径上所指定的类库。</p>
-<p><img src="C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20210408141736907.png" alt="image-20210408141736907"></p>
+<p><img src="G:\Java\hexo\typora-user-images\image-20210408141736907.png" alt="image-20210408141736907"></p>
 <p> 除顶层启动类加载器之外，其他都有自己的父类加载器。<br>工作过程：如果一个类加载器收到一个类加载的请求，它首先不会自己加载，而是把这个请求委派给父类加载器。只有父类无法完成时子类才会尝试加载。</p>
 <h3 id="2-3-2-破坏双亲委派模型"><a href="#2-3-2-破坏双亲委派模型" class="headerlink" title="2.3.2 破坏双亲委派模型"></a>2.3.2 破坏双亲委派模型</h3><p>keyword：线程上下文加载器(Thread Context ClassLoader)</p>
 <h1 id="3-HotSpot-虚拟机对象"><a href="#3-HotSpot-虚拟机对象" class="headerlink" title="3.HotSpot 虚拟机对象"></a>3.HotSpot 虚拟机对象</h1><blockquote>
@@ -602,18 +602,18 @@
 <h2 id="3-3-对象的访问定位"><a href="#3-3-对象的访问定位" class="headerlink" title="3.3 对象的访问定位"></a>3.3 对象的访问定位</h2><p>使用对象时，通过栈上的 reference 数据来操作堆上的具体对象。</p>
 <p>通过句柄访问</p>
 <p>Java 堆中会分配一块内存作为句柄池。reference 存储的是句柄地址。详情见图。</p>
-<p><img src="C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20210408142715103.png" alt="image-20210408142715103"></p>
+<p><img src="G:\Java\hexo\typora-user-images\image-20210408142715103.png" alt="image-20210408142715103"></p>
 <p> 使用直接指针访问</p>
 <p>reference 中直接存储对象地址</p>
-<p><img src="C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20210408142757109.png" alt="image-20210408142757109"></p>
+<p><img src="G:\Java\hexo\typora-user-images\image-20210408142757109.png" alt="image-20210408142757109"></p>
 <p>比较：使用句柄的最大好处是 reference 中存储的是稳定的句柄地址，在对象移动(GC)是只改变实例数据指针地址，reference 自身不需要修改。直接指针访问的最大好处是速度快，节省了一次指针定位的时间开销。如果是对象频繁 GC 那么句柄方法好，如果是对象频繁访问则直接指针访问好。</p>
 <h1 id="4-垃圾回收器与内存分配策略"><a href="#4-垃圾回收器与内存分配策略" class="headerlink" title="4.垃圾回收器与内存分配策略"></a>4.垃圾回收器与内存分配策略</h1><h2 id="4-1-概述"><a href="#4-1-概述" class="headerlink" title="4.1 概述"></a>4.1 概述</h2><p>程序计数器、虚拟机栈、本地方法栈 3 个区域随线程生灭(因为是线程私有)，栈中的栈帧随着方法的进入和退出而有条不紊地执行着出栈和入栈操作。而 Java 堆和方法区则不一样，一个接口中的多个实现类需要的内存可能不一样，一个方法中的多个分支需要的内存也可能不一样，我们只有在程序处于运行期才知道那些对象会创建，这部分内存的分配和回收都是动态的，垃圾回收期所关注的就是这部分内存。</p>
 <h2 id="4-2-对象已死吗？"><a href="#4-2-对象已死吗？" class="headerlink" title="4.2 对象已死吗？"></a>4.2 对象已死吗？</h2><p>在进行内存回收之前要做的事情就是判断那些对象是‘死’的，哪些是‘活’的。</p>
 <h3 id="4-2-1-引用计数法"><a href="#4-2-1-引用计数法" class="headerlink" title="4.2.1 引用计数法"></a>4.2.1 引用计数法</h3><p>给对象添加一个引用计数器。但是难以解决循环引用问题。</p>
-<p><img src="C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20210408143228822.png" alt="image-20210408143228822"></p>
+<p><img src="G:\Java\hexo\typora-user-images\image-20210408143228822.png" alt="image-20210408143228822"></p>
 <p>从图中可以看出，如果不下小心直接把 Obj1-reference 和 Obj2-reference 置 null。则在 Java 堆当中的两块内存依然保持着互相引用无法回收。</p>
 <h3 id="4-2-2-可达性分析法"><a href="#4-2-2-可达性分析法" class="headerlink" title="4.2.2 可达性分析法"></a>4.2.2 可达性分析法</h3><p>通过一系列的 ‘GC Roots’ 的对象作为起始点，从这些节点出发所走过的路径称为引用链。当一个对象到 GC Roots 没有任何引用链相连的时候说明对象不可用。</p>
-<p><img src="C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20210408143309596.png" alt="image-20210408143309596"></p>
+<p><img src="G:\Java\hexo\typora-user-images\image-20210408143309596.png" alt="image-20210408143309596"></p>
 <p>可作为 GC Roots 的对象：</p>
 <blockquote>
 <p>虚拟机栈(栈帧中的本地变量表)中引用的对象<br>方法区中类静态属性引用的对象<br>方法区中常量引用的对象<br>本地方法栈中 JNI(即一般说的 Native 方法) 引用的对象</p>
